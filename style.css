@@ -1,0 +1,121 @@
+* {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #f1f1f1;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 800px;
+  height: 600px;
+  max-width: 1000px;
+  max-height: 1000px;
+  padding: 72px;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.difficulty button {
+  border: none;
+  border-radius: 8px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 1rem;
+  flex: 1;
+  text-align: center;
+}
+
+.easy {
+  background-color: #04DF87;
+}
+
+.moderate {
+  background-color: #FEB615;
+}
+
+.hard {
+  background-color: #EC4040;
+}
+
+.expression {
+  font-size: 4rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  border: none;
+  border-radius: 12px;
+  color: #252525;
+  padding: 24px;
+  font-size: 28px;
+  width: 256px;
+  height: 64px;
+  -moz-appearance: textfield;
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  text-align: center;
+  font-size: 18px;
+}
+
+.check {
+  border: none;
+  background-color: orange;
+  border-radius: 12px;
+  font-size: 36px;
+  width: 256px;
+  height: 64px;
+}
+
+a {
+  text-decoration: none;
+  color: #202020;
+}
+a:hover {
+  color: #555;
+} 
+a:active {
+  color: #7b7b7b;
+}
+footer {
+  color: #202020;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
