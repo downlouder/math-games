@@ -29,12 +29,23 @@ button:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.6rem;
   width: 800px;
   height: 600px;
   max-width: 1000px;
   max-height: 1000px;
-  padding: 36px 72px;
+  padding: 12px 72px;
+}
+
+.statistics {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statistics p {
+  width: 200px;
+  text-align: center;
 }
 
 .currentDifficulty {
@@ -175,9 +186,17 @@ footer {
   }
 
   .container {
-    min-height: 80vh;
+    min-height: 90vh;
     width: 100%;
     padding: 0 4%;
+  }
+  
+  .statistics {
+    flex-direction: column;
+  }
+
+  .statistics p {
+    width: 100%;
   }
 
   .difficulty {
