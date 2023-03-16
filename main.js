@@ -3,8 +3,8 @@ const checkButton = document.querySelector('.check');
 const input = document.querySelector('#result');
 const currentDiff = document.querySelector('.currentDifficulty');
 const expression = document.querySelector('.expression');
-const arithmeticActions = ['add', 'sub', 'mul', 'div'];
 const output = document.querySelector('.output');
+const arithmeticActions = ['add', 'sub', 'mul', 'div'];
 
 let resultExp = '';
 let userResult = '';
@@ -44,12 +44,13 @@ function showExpression(exp) {
 function compareExp(expResult, userResult) {
   if (userResult == '') return;
   if (expResult == userResult) {
-    console.log('You are right')
+    output.className = 'output right';
     output.textContent = 'You are right';
     createExp(diffParams);
   } else {
-    console.log('You are wrong')
-    output.textContent = 'You are wrong';
+    output.className = 'output wrong';
+    output.textContent = `You are wrong, last right answer is ${resultExp}`;
+    createExp(diffParams);
   }
 }
 
@@ -59,11 +60,11 @@ function checkAnswer() {
 }
 
 function showDifficulty(diff) {
-  currentDiff.textContent = (`Current Difficulty: ${diff}`);
+  currentDiff.innerHTML = `Current Difficulty: <span class="${diff}">${diff}</span>`;
   if (diff === 'Easy') diffParams = [0, 10];
-  else if (diff === 'Moderate') diffParams = [5, 50];
-  else if (diff === 'Hard') diffParams = [10, 100];
-  else if (diff === 'Insane') diffParams = [40, 600];
+  else if (diff === 'Moderate') diffParams = [2, 50];
+  else if (diff === 'Hard') diffParams = [5, 100];
+  else if (diff === 'Insane') diffParams = [15, 600];
   createExp(diffParams);
 }
 
@@ -75,5 +76,4 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') checkAnswer();
 });
 
-checkButton.addEventListener('click', checkAnswer)
-
+checkButton.addEventListener('click', checkAnswer);

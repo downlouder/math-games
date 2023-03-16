@@ -19,12 +19,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: 2rem;
   width: 800px;
   height: 600px;
   max-width: 1000px;
   max-height: 1000px;
   padding: 72px;
+}
+
+.currentDifficulty {
+  font-size: 1.4rem;
 }
 
 .difficulty {
@@ -45,17 +49,15 @@ body {
   text-align: center;
 }
 
-.easy {
-  background-color: #04DF87;
-}
+.Easy { color: #04DF87; }
+.Moderate { color: #FEB615; }
+.Hard { color: #EC4040; }
+.Insane { color: red; }
 
-.moderate {
-  background-color: #FEB615;
-}
-
-.hard {
-  background-color: #EC4040;
-}
+.easy { background-color: #04DF87; }
+.moderate { background-color: #FEB615; }
+.hard { background-color: #EC4040; }
+.insane { background-color: red; }
 
 .expression {
   font-size: 4rem;
@@ -96,10 +98,31 @@ input::placeholder {
   font-size: 36px;
   width: 256px;
   height: 64px;
+  transition: all 300ms;
+}
+.check:hover {
+  background-color: #FEB615;
+}
+.check:active {
+  background-color: darkorange;
+}
+
+.output-block {
+  width: 100%;
 }
 
 .output {
+  width: 80%;
+  margin: 0 auto;
   font-size: 1.5rem;
+  text-align: center;
+}
+
+.right {
+  color: #04DF87;
+}
+.wrong {
+  color: #EC4040;
 }
 
 /* FOOTER */
@@ -124,4 +147,24 @@ footer {
   justify-content: center;
   width: 100%;
   margin-bottom: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #f1f1f1;
+  }
+
+  .container {
+    min-height: 80vh;
+    width: 100%;
+    padding: 0 4%;
+  }
+
+  .difficulty {
+    gap: 0.8rem;
+  }
+
+  footer {
+    display: none;
+  }
 }
