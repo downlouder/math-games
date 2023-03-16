@@ -62,7 +62,7 @@ function checkAnswer() {
 function showDifficulty(diff) {
   currentDiff.innerHTML = `Current Difficulty: <span class="${diff}">${diff}</span>`;
   if (diff === 'Easy') diffParams = [0, 10];
-  else if (diff === 'Moderate') diffParams = [2, 50];
+  else if (diff === 'Medium') diffParams = [2, 50];
   else if (diff === 'Hard') diffParams = [5, 100];
   else if (diff === 'Insane') diffParams = [15, 600];
   createExp(diffParams);

@@ -10,6 +10,16 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: #252525;
+}
+
+button {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  transition: all 200ms;
+}
+
+button:active {
+  transform: translateY(2px);
 }
 
 .container {
@@ -24,7 +34,7 @@ body {
   height: 600px;
   max-width: 1000px;
   max-height: 1000px;
-  padding: 72px;
+  padding: 36px 72px;
 }
 
 .currentDifficulty {
@@ -49,15 +59,21 @@ body {
   text-align: center;
 }
 
-.Easy { color: #04DF87; }
-.Moderate { color: #FEB615; }
-.Hard { color: #EC4040; }
-.Insane { color: red; }
+.Easy { color: #05d357; }
+.Medium { color: #FEB615; }
+.Hard { color: #ea3e3e; }
+.Insane { color: #ff0000; }
 
-.easy { background-color: #04DF87; }
-.moderate { background-color: #FEB615; }
-.hard { background-color: #EC4040; }
-.insane { background-color: red; }
+.easy { background-color: #05d357; }
+.medium { background-color: #FEB615; }
+.hard { background-color: #ea3e3e; }
+.insane { background-color: #ff0000; }
+
+.easy:hover { background-color: #04c04f; }
+.medium:hover { background-color: #eba611; }
+.hard:hover { background-color: #d73838; }
+.insane:hover { background-color: #f10101; }
+
 
 .expression {
   font-size: 4rem;
@@ -71,6 +87,7 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 12px;
   color: #252525;
   padding: 24px;
@@ -78,12 +95,14 @@ input[type=number] {
   width: 256px;
   height: 64px;
   text-align: center;
+  transition: all 300ms;
   -moz-appearance: textfield;
 }
 
 input:focus {
   border: none;
   outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 input::placeholder {
@@ -93,18 +112,19 @@ input::placeholder {
 
 .check {
   border: none;
-  background-color: orange;
+  background-color: #383838;
   border-radius: 12px;
+  color: #f1f1f1;
   font-size: 36px;
   width: 256px;
   height: 64px;
   transition: all 300ms;
 }
 .check:hover {
-  background-color: #FEB615;
+  background-color: #353535;
 }
 .check:active {
-  background-color: darkorange;
+  background-color: #252525;
 }
 
 .output-block {
@@ -119,10 +139,10 @@ input::placeholder {
 }
 
 .right {
-  color: #04DF87;
+  color: #05d357;
 }
 .wrong {
-  color: #EC4040;
+  color: #ea3e3e;
 }
 
 /* FOOTER */
@@ -149,7 +169,7 @@ footer {
   margin-bottom: 8px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   body {
     background-color: #f1f1f1;
   }
@@ -161,10 +181,25 @@ footer {
   }
 
   .difficulty {
-    gap: 0.8rem;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .difficulty button {
+    flex: none;
+    width: 35vmin;
   }
 
   footer {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0 50px;
+  }
+  .container {
+    max-width: 800px;
+    width: 100%;
   }
 }
