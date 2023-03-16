@@ -75,6 +75,7 @@ input[type=number] {
   font-size: 28px;
   width: 256px;
   height: 64px;
+  text-align: center;
   -moz-appearance: textfield;
 }
 
@@ -97,6 +98,11 @@ input::placeholder {
   height: 64px;
 }
 
+.output {
+  font-size: 1.5rem;
+}
+
+/* FOOTER */
 a {
   text-decoration: none;
   color: #202020;
