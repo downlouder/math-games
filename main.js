@@ -75,5 +75,5 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') checkAnswer();
 });
 
-checkButton.addEventListener('click', () => checkAnswer)
+checkButton.addEventListener('click', checkAnswer)
 
