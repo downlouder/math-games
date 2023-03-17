@@ -14,6 +14,7 @@ body {
 }
 
 button {
+  border: none;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   transition: all 200ms;
 }
@@ -35,6 +36,27 @@ button:active {
   max-width: 1000px;
   max-height: 1000px;
   padding: 12px 72px;
+}
+
+.settings {
+  display: flex;
+  gap: 1rem;
+}
+
+.settings button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+button[data-bool="true"] {
+  background-color: #383838;
+  color: #f1f1f1;
+}
+
+button[data-bool="false"] {
+  background-color: #f1f1f1;
+  color: #252525;
 }
 
 .statistics {
@@ -61,7 +83,6 @@ button:active {
 }
 
 .difficulty button {
-  border: none;
   border-radius: 8px;
   height: 48px;
   font-weight: 600;

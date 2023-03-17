@@ -8,17 +8,21 @@ const arithmeticActions = ['add', 'sub', 'mul', 'div'];
 const roundsStat = document.querySelector('.rounds');
 const pointsStat = document.querySelector('.points');
 const winRate = document.querySelector('.win-rate');
+let settingsButtons = document.querySelectorAll('.settings button');
 
 let points = localStorage.getItem('points') || 0;
 let rounds = localStorage.getItem('rounds') || 0;
+let winRounds = localStorage.getItem('winRounds') || 0;
 let resultExp = '';
 let userResult = '';
 let diffParams = [0, 10];
 
 localStorage.setItem('points', points);
 localStorage.setItem('rounds', rounds);
+localStorage.setItem('winRounds', winRounds);
+
 roundsStat.textContent = `Played rounds: ${localStorage.getItem('rounds')}`;
-winRate.textContent = `Win rate: ${(localStorage.getItem('points') / localStorage.getItem('rounds') || 0).toFixed(2)}%`;
+winRate.textContent = `Win rate: ${((localStorage.getItem('winRounds') / localStorage.getItem('rounds') || 0).toFixed(2)) * 100}%`;
 pointsStat.textContent = `Points: ${localStorage.getItem('points')}`;
 
 function createExp(diffParams) {
@@ -44,10 +48,6 @@ function createExp(diffParams) {
       resultExp = firstNum / secondNum;
     }
   }
-  rounds++;
-  localStorage.setItem('rounds', rounds);
-  roundsStat.textContent = `Played rounds: ${localStorage.getItem('rounds')}`;
-  winRate.textContent = `Win rate: ${(localStorage.getItem('points') / localStorage.getItem('rounds') || 0).toFixed(2)}%`;
   showExpression(exp);
   console.log(resultExp);
 }
@@ -61,6 +61,7 @@ function compareExp(expResult, userResult) {
   if (expResult == userResult) {
     output.className = 'output right';
     output.textContent = 'You are right';
+    winRounds++;
     points++;
     createExp(diffParams);
   } else {
@@ -69,9 +70,14 @@ function compareExp(expResult, userResult) {
     points--;
     createExp(diffParams);
   }
+  rounds++;
+  localStorage.setItem('rounds', rounds);
+  localStorage.setItem('winRounds', winRounds);
   localStorage.setItem('points', points);
-  pointsStat.textContent = `Points: ${localStorage.getItem('points')}`;
+  roundsStat.textContent = `Played rounds: ${localStorage.getItem('rounds')}`;
   winRate.textContent = `Win rate: ${(localStorage.getItem('points') / localStorage.getItem('rounds') || 0).toFixed(2)}%`;
+  pointsStat.textContent = `Points: ${localStorage.getItem('points')}`;
+  winRate.textContent = `Win rate: ${((localStorage.getItem('winRounds') / localStorage.getItem('rounds') || 0).toFixed(2)) * 100}%`;
 }
 
 function checkAnswer() {
@@ -88,9 +94,23 @@ function showDifficulty(diff) {
   createExp(diffParams);
 }
 
+function toggleActive(button) {
+  if (button.dataset.bool === 'true') button.dataset.bool = false;
+  else if (button.dataset.bool === 'false') button.dataset.bool = true;
+}
+
+function setArithmeticActions(button) {
+
+}
+
 diffButtons.forEach(button => button.addEventListener('click', () => {
   showDifficulty(button.textContent);
 }));
+
+settingsButtons.forEach(button => {
+  button.addEventListener('click', () => toggleActive(button));
+  button.addEventListener('click', () => setArithmeticActions(button));
+})
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') checkAnswer();
