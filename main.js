@@ -8,6 +8,7 @@ const roundsStat = document.querySelector('.rounds');
 const pointsStat = document.querySelector('.points');
 const winRate = document.querySelector('.win-rate');
 const settingsButtons = document.querySelectorAll('.settings button');
+const clearBtn = document.querySelector('.clear');
 
 let arithmeticActions = ['+', '-', '*', '/'];
 let points = localStorage.getItem('points') || 0;
@@ -62,6 +63,10 @@ function setArgsToLocal(rounds, winRounds, points) {
 
 function clearLocalStorage() {
   localStorage.clear();
+  rounds = 0;
+  points = 0;
+  winRounds = 0;
+  setArgsToLocal(rounds, winRounds, points);
 }
 
 function compareExp(expResult, userResult) {
@@ -123,3 +128,5 @@ window.addEventListener('keydown', (e) => {
 });
 
 checkButton.addEventListener('click', checkAnswer);
+
+clearBtn.addEventListener('click', clearLocalStorage);
