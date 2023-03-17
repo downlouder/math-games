@@ -131,6 +131,12 @@ button[data-bool="false"] {
   font-size: 4rem;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -230,6 +236,7 @@ footer {
     min-height: 90vh;
     width: 100%;
     padding: 0 4%;
+    gap: 1rem;
   }
 
   .clear-block {
