@@ -23,8 +23,7 @@ setArgsToLocal(rounds, winRounds, points)
 function createExp(diffParams) {
   let exp = '';
   let action = arithmeticActions[Math.floor(Math.random() * arithmeticActions.length)];
-  let firstNum = Math.floor(Math.random() * diffParams[1] + 1);
-  let secondNum = Math.floor(Math.random() * diffParams[1] + 1);
+  let [firstNum, secondNum] = createNumbers(diffParams);
   if (action === '+') {
     exp = `${firstNum} + ${secondNum}`;
     resultExp = firstNum + secondNum;
@@ -32,19 +31,28 @@ function createExp(diffParams) {
     exp = `${firstNum} - ${secondNum}`;
     resultExp = firstNum - secondNum;
   } else if (action === '*') {
-    exp = `${firstNum} * ${secondNum}`;
-    resultExp = firstNum * secondNum;
+    resultExp = 10000;
+    while (resultExp > diffParams[1] * 5) {
+      [firstNum, secondNum] = createNumbers(diffParams);      
+      exp = `${firstNum} * ${secondNum}`;
+      resultExp = firstNum * secondNum;
+    }
   } else if (action === '/') {
     resultExp = '.';
     while (resultExp.toString().includes('.') || resultExp === 1 || secondNum === 1) {
-      firstNum = Math.floor(Math.random() * diffParams[1] + 1);
-      secondNum = Math.floor(Math.random() * diffParams[1] + 1);
+      [firstNum, secondNum] = createNumbers(diffParams);
       exp = `${firstNum} / ${secondNum}`;
       resultExp = firstNum / secondNum;
     }
   }
   showExpression(exp);
   console.log(resultExp);
+}
+
+function createNumbers(params) {
+  let firstNum = Math.floor(Math.random() * params[1] + 1 + params[0]);
+  let secondNum = Math.floor(Math.random() * params[1] + 1 + params[0]);
+  return [firstNum, secondNum];
 }
 
 function showExpression(exp) {
@@ -96,8 +104,8 @@ function showDifficulty(diff) {
   currentDiff.innerHTML = `Current Difficulty: <span class="${diff}">${diff}</span>`;
   if (diff === 'Easy') diffParams = [0, 10];
   else if (diff === 'Medium') diffParams = [2, 50];
-  else if (diff === 'Hard') diffParams = [5, 100];
-  else if (diff === 'Insane') diffParams = [15, 600];
+  else if (diff === 'Hard') diffParams = [3, 100];
+  else if (diff === 'Insane') diffParams = [10, 600];
   createExp(diffParams);
 }
 
